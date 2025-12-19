@@ -208,3 +208,5 @@ __marimo__/
 
 #json
 *.json
+#mlflow
+mlruns/

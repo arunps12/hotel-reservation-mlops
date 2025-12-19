@@ -4,6 +4,7 @@ from hotel_reservation_mlops.logging.logger import get_logger
 from hotel_reservation_mlops.exception.custom_exception import CustomException
 from hotel_reservation_mlops.components.data_ingestion import DataIngestion
 from hotel_reservation_mlops.components.data_preprocessing import DataProcessor
+from hotel_reservation_mlops.components.model_training import ModelTraining
 from hotel_reservation_mlops.utils.common_functions import read_yaml
 from hotel_reservation_mlops.config.paths_config import *
 
@@ -25,6 +26,13 @@ if __name__ == "__main__":
             processed_dir=PROCESSED_DIR,
             config_path=CONFIG_PATH,
         ).process()
+
+        logger.info("Stage 3: Model Training")
+        ModelTraining(
+            train_path=PROCESSED_TRAIN_DATA_PATH,
+            test_path=PROCESSED_TEST_DATA_PATH,
+            model_output_path=MODEL_OUTPUT_PATH,
+        ).run()
 
         logger.info("=== Pipeline completed successfully ===")
 
