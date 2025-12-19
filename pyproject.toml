@@ -1,0 +1,19 @@
+[project]
+name = "hotel-reservation-mlops"
+version = "0.1.0"
+description = "End-to-end MLOps pipeline for hotel reservation prediction"
+requires-python = ">=3.10"
+dependencies = [
+    "google-cloud-storage>=3.7.0",
+    "numpy>=2.2.6",
+    "pandas>=2.3.3",
+    "scikit-learn>=1.7.2",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hotel_reservation_mlops*"]
